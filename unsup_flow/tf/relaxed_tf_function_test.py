@@ -13,14 +13,14 @@ from unsup_flow.tf.relaxed_tf_function import relaxed_tf_function
     lambda x: [s if s in [2, 3, 4] and i > 0 else None for i, s in enumerate(x.shape)]
 )
 def tf_func(dict_of_tensors, step, **kwargs):
-    print(
+    tf.print(
         "####################################### Tracing #########################################"
     )
-    print(kwargs)
-    print({k: id(v) for k, v in kwargs.items()})
-    print(dict_of_tensors)
-    print(step)
-    print([v for k, v in kwargs.items() if len(k) > 1])
+    tf.print(kwargs)
+    tf.print({k: id(v) for k, v in kwargs.items()})
+    tf.print(dict_of_tensors)
+    tf.print(step)
+    tf.print([v for k, v in kwargs.items() if len(k) > 1])
     return (
         dict_of_tensors["c"]
         + dict_of_tensors["ccc"]
@@ -33,14 +33,14 @@ def tf_func(dict_of_tensors, step, **kwargs):
     lambda x: [s if s in [2, 3, 4] and i > 0 else None for i, s in enumerate(x.shape)]
 )
 def tf_func2(dict_of_tensors, step, **kwargs):
-    print(
+    tf.print(
         "####################################### Tracing 2 #########################################"
     )
-    print(kwargs)
-    print({k: id(v) for k, v in kwargs.items()})
-    print(dict_of_tensors)
-    print(step)
-    print([v for k, v in kwargs.items() if len(k) > 1])
+    tf.print(kwargs)
+    tf.print({k: id(v) for k, v in kwargs.items()})
+    tf.print(dict_of_tensors)
+    tf.print(step)
+    tf.print([v for k, v in kwargs.items() if len(k) > 1])
     return dict_of_tensors["c"] + step + sum(v for k, v in kwargs.items() if len(k) > 1)
 
 
